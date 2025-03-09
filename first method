@@ -3,29 +3,37 @@ class Solution(object):
 
     def ex(self,unit):
         test=True
+        even=0
         for x in range(len(unit)):
             counter=0
-            if unit[x] =="(" :
-                for i in range(x,len(unit)):
-                    counter +=1
+            if (unit[x]in [")","]","}"] and x==0) or len(unit)==1:
+                        test=False
+            elif unit[x] =="(" :
+                for i in range(x+1,len(unit)):
+                    
                     if unit[i] ==")" and counter%2==0:
                         break
                     if (i==(len(unit)-1)):
                         test=False
+                    counter +=1
             elif unit[x] =="[" :
-                    for i in range(x,len(unit)):
-                        counter +=1
+                    for i in range(x+1,len(unit)):
+                        
                         if unit[i] =="]" and counter%2==0:
                              break
                         if (i==(len(unit)-1)):
                             test=False
-            elif unit[x] =="{" :
-                    for i in range(x,len(unit)):
                         counter +=1
+            elif unit[x] =="{" :
+                    for i in range(x+1,len(unit)):
+                        
                         if unit[i] =="}" and counter%2==0:
                             break
                         if (i==(len(unit)-1)):
                             test=False
+                        counter +=1
+            
+
         return test
     def isValid(self, s):
         """
