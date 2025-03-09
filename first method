@@ -4,21 +4,25 @@ class Solution(object):
     def ex(self,unit):
         test=True
         for x in range(len(unit)):
+            counter=0
             if unit[x] =="(" :
                 for i in range(x,len(unit)):
-                    if unit[i] ==")":
+                    counter +=1
+                    if unit[i] ==")" and counter%2==0:
                         break
                     if (i==(len(unit)-1)):
                         test=False
             elif unit[x] =="[" :
                     for i in range(x,len(unit)):
-                        if unit[i] =="]":
+                        counter +=1
+                        if unit[i] =="]" and counter%2==0:
                              break
                         if (i==(len(unit)-1)):
                             test=False
             elif unit[x] =="{" :
                     for i in range(x,len(unit)):
-                        if unit[i] =="}":
+                        counter +=1
+                        if unit[i] =="}" and counter%2==0:
                             break
                         if (i==(len(unit)-1)):
                             test=False
