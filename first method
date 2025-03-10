@@ -1,38 +1,54 @@
 class Solution(object):
     #solve the closing problem yet leaving the order 
-
+    #counter for nbr of (and nbr of ")" and compare
+    #best ide is to use the lenght to compare position of the one u use
+    #with the oopsite of that position if the lengh is odd the exemple is wrong
+    #already , firt rule it have to be even ,second test for first and last have
+    #to be opening and closing right and rest easy to fix
     def ex(self,unit):
+        tot_nbr=[0,0,0]
         test=True
         even=0
+        if len(unit)%2!=0 :
+            return False
         for x in range(len(unit)):
             counter=0
-            if (unit[x]in [")","]","}"] and x==0) or len(unit)==1:
+            #add case for last string thats opened wihout close
+            if (unit[x]in [")","]","}"] and x==0 ) or len(unit)==1 or (unit[len(unit)-1]in ["(","[","{"]):
                         test=False
             elif unit[x] =="(" :
+                tot_nbr[0]+=1
                 for i in range(x+1,len(unit)):
                     
                     if unit[i] ==")" and counter%2==0:
+                        tot_nbr[0]+=1
                         break
                     if (i==(len(unit)-1)):
                         test=False
                     counter +=1
             elif unit[x] =="[" :
+                    tot_nbr[1]+=1
                     for i in range(x+1,len(unit)):
                         
                         if unit[i] =="]" and counter%2==0:
+                             tot_nbr[1]+=1
                              break
                         if (i==(len(unit)-1)):
                             test=False
                         counter +=1
             elif unit[x] =="{" :
+                    tot_nbr[2]+=1
                     for i in range(x+1,len(unit)):
                         
                         if unit[i] =="}" and counter%2==0:
+                            tot_nbr[2]+=1
                             break
                         if (i==(len(unit)-1)):
                             test=False
                         counter +=1
-            
+        for x in tot_nbr :
+            if x%2!=0:
+                test=False
 
         return test
     def isValid(self, s):
