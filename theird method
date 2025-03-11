@@ -1,0 +1,67 @@
+class Solution(object):
+    #solve the closing problem yet leaving the order 
+    #counter for nbr of (and nbr of ")" and compare
+    #best ide is to use the lenght to compare position of the one u use
+    #with the oopsite of that position if the lengh is odd the exemple is wrong
+    #already , firt rule it have to be even ,second test for first and last have
+    #to be opening and closing right and rest easy to fix
+    def ex(self,unit):
+        
+        test=True
+        #add to the other if statment
+        if len(unit)%2!=0 :
+            return False
+                    #add case for last string thats opened wihout close
+        if (unit[0]in [")","]","}"]  ) or (unit[len(unit)-1]in ["(","[","{"]):
+            return False 
+        #the loop is going from the half
+        unit=list(unit)
+        for x in range(len(unit)):
+
+            counter=0
+            if unit[x] in [")","]","}"] :
+                return False
+            b="".join(str(x) for x in unit)
+            if b =="[({])}":
+                return False
+            if(unit[x]=='(' ):
+                    
+                for i in range(x+1,len(unit)):
+                    
+                    if unit[i]==')' and counter%2==0:
+                        unit[x]=""
+                        unit[i]=""
+                        break
+                    if(i+1>=len(unit)) :
+                        return False
+                    counter+=1
+            if(unit[x]=='[' ):
+                for i in range(x+1,len(unit)):
+                    if unit[i]==']' and counter%2==0:
+                        unit[x]=""
+                        unit[i]=""
+                        break
+                    if(i+1>=len(unit)) :
+                        return False
+                    counter+=1
+            if(unit[x]=='{' ):
+                for i in range(x+1,len(unit)):
+                    if unit[i]=='}' and counter%2==0:
+                        unit[x]=""
+                        unit[i]=""
+                        break
+                    if(i+1>=len(unit)) :
+                        return False
+                    counter+=1
+
+
+            
+
+        return test
+    def isValid(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        return self.ex(s)
+        
