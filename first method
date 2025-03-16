@@ -1,3 +1,4 @@
+#chaking based in every possible case
 class Solution(object):
 
     def ex(self,unit):
