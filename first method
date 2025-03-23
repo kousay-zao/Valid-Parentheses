@@ -1,6 +1,6 @@
 #chaking based in every possible case
 class Solution(object):
-
+#methode for the examine
     def ex(self,unit):
         tot_nbr=[0,0,0]
         test=True
