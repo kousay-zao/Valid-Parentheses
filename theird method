@@ -4,7 +4,7 @@ class Solution(object):
     #best ide is to use the lenght to compare position of the one u use
     #with the oopsite of that position if the lengh is odd the exemple is wrong
     #already , firt rule it have to be even ,second test for first and last have
-    #to be opening and closing right and rest easy to fix
+    
     def ex(self,unit):
         
         test=True
